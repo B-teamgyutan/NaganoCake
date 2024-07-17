@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  devise_for :users
+  
   
   # 管理者用
   # URL /admin/sign_in ...
