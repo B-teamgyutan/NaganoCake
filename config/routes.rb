@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
   end
   
+  devise_scope :customer do
+  get '/customers/sign_out', to: 'public/sessions#destroy'
+end
+  
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
