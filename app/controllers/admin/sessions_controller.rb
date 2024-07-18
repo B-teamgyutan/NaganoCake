@@ -18,6 +18,11 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def destroy
+    reset_session
+    redirect_to new_admin_session_path
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
