@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top" 
     get '/about' => 'homes#about'
+    resources :orders, only: [:new, :index, :create, :show] do
+      collection do
+        get 'thanks'
+        post 'confirm'
+      end
+    end
   end
   
   devise_scope :customer do
