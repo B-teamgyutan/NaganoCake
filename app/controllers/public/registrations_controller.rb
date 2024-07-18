@@ -60,3 +60,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
+
