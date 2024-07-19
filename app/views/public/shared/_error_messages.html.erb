@@ -1,15 +1,35 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" data-turbo-cache="false">
     <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
+      <%= resource.errors.count %>件のエラーが発生しました
     </h2>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% resource.errors.each do |attribute, message| %>
+        <% if attribute == :last_name %>
+          <li>姓を入力してください</li>
+        <% elsif attribute == :first_name %>
+          <li>名を入力してください</li>
+        <% elsif attribute == :last_name_kana %>
+          <li>カナ性をカタカナで入力してください</li>
+        <% elsif attribute == :first_name_kana %>
+          <li>カナ名をカタカナで入力してください</li>
+        <% elsif attribute == :post_code %>
+          <li>郵便番号を入力してください</li>
+        <% elsif attribute == :address %>
+          <li>住所を入力してください</li>
+        <% elsif attribute == :phone_number %>
+          <li>電話番号を入力してください</li>
+        <% elsif attribute == :email %>
+          <li>メールアドレスを入力してください</li>
+        <% elsif attribute == :password %>
+          <li>パスワードを６文字以上で入力してください</li>
+        <% elsif attribute == :password_confirmation %>
+          <li>上記と同じパスワードを入力してください</li>
+        <% else %>
+          <li><%= message %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
 <% end %>
+
