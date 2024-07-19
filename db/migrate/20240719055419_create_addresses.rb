@@ -1,9 +1,10 @@
 class CreateAddresses < ActiveRecord::Migration[6.1]
   def change
-    create_table :addresses do |t|
-      validates :post_code, presence: true, length: { maximum: 7, minimun: 7 },numericality: true
-    	validates :address, presence: true
-    	validates :name, presence: true
+    create_table :mailing_addresses do |t|
+      t.integer :customer_id, null: false
+      t.string :postcode, null: false
+      t.string :address, null: false
+      t.string :name, null: false
       t.timestamps
     end
   end
