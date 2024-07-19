@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         post 'confirm'
       end
     end
-    resources :addresses, only: [:new, :show]
+    resources :addresses, except: [:new, :show]
   end
 
   devise_scope :customer do

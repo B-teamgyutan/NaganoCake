@@ -1,0 +1,18 @@
+index.html.erb 23～33
+
+<% @addresses.each do |m|%>
+<tr>
+	<td style="line-height: 30px;"><%= m.post_code%></td>
+	<td style="line-height: 30px;"><%= m.address %></td>
+	<td style="line-height: 30px;"><%= m.name %></td>
+	<td style="line-height: 30px;">
+		<%= link_to '編集する',  edit_address_path(m) ,class: "btn btn-primary"%>
+		<%= link_to '削除する',  address_path(m) , method: :delete ,class: "btn btn-danger"%>
+	</td>
+</tr>
+<% end %>
+
+
+_form.html.erb 5
+
+		<%= f.hidden_field :customer_id, value: current_customer.id %>
