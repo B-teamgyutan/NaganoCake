@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root :to =>"homes#top" 
+    root :to =>"homes#top"
     get '/about' => 'homes#about'
     resources :orders, only: [:new, :index, :create, :show] do
       collection do
@@ -17,12 +17,12 @@ Rails.application.routes.draw do
     end
     resources :addresses, except: [:new, :show]
   end
-  
+
   devise_scope :customer do
   get '/customers/sign_out', to: 'public/sessions#destroy'
 end
-  
-  
+
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

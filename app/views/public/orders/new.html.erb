@@ -3,7 +3,7 @@
 
 <%= form_with model: @order do |f| %>
   <p>支払方法</p>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
   <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
 
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
@@ -12,9 +12,12 @@
 
 <p>お届け先</p>
 <!--〇ご自身の住所-->
+<!--< %= f.radio_button :address_type,"member_address", checked: true %>-->
 <!--〇登録済み住所から選択-->
+<!--< %= f.radio_button :address_type, "registered_address" %>-->
 
-<!--〇新しいお届け先-->
+<!--< %= f.radio_button :address_type, "new_address" %>-->
+<!--< %= f.label :address_type, "新しいお届け先" %>-->
 <%= form_with model: @order do |f| %>
   <p>郵便番号（ハイフンなし）<%= f.text_field :post_code, placeholder: "0000000" %></p>
   <p>住所<%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></p>
