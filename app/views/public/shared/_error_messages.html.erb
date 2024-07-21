@@ -6,25 +6,45 @@
     <ul>
       <% resource.errors.each do |attribute, message| %>
         <% if attribute == :last_name %>
-          <li>姓を入力してください</li>
+          <% if resource.errors.include?(:last_name) %>
+            <li>姓を入力してください</li>
+          <% end %>
         <% elsif attribute == :first_name %>
-          <li>名を入力してください</li>
+          <% if resource.errors.include?(:first_name) %>
+            <li>名を入力してください</li>
+          <% end %>
         <% elsif attribute == :last_name_kana %>
-          <li>カナ性をカタカナで入力してください</li>
+          <% if resource.errors.include?(:last_name_kana) %>
+            <li>カナ性をカタカナで入力してください</li>
+          <% end %>
         <% elsif attribute == :first_name_kana %>
-          <li>カナ名をカタカナで入力してください</li>
+          <% if resource.errors.include?(:first_name_kana) %>
+            <li>カナ名をカタカナで入力してください</li>
+          <% end %>
         <% elsif attribute == :post_code %>
-          <li>郵便番号を入力してください</li>
+          <% if resource.errors.include?(:post_code) %>
+            <li>郵便番号を入力してください</li>
+          <% end %>
         <% elsif attribute == :address %>
-          <li>住所を入力してください</li>
+          <% if resource.errors.include?(:address) %>
+            <li>住所を入力してください</li>
+          <% end %>
         <% elsif attribute == :phone_number %>
-          <li>電話番号を入力してください</li>
+          <% if resource.errors.include?(:phone_number) %>
+            <li>電話番号を入力してください</li>
+          <% end %>
         <% elsif attribute == :email %>
-          <li>メールアドレスを入力してください</li>
+          <% if resource.errors.include?(:email) %>
+            <li>メールアドレスを入力してください</li>
+          <% end %>
         <% elsif attribute == :password %>
-          <li>パスワードを６文字以上で入力してください</li>
+          <% if resource.errors.include?(:password) %>
+            <li>パスワードを６文字以上で入力してください</li>
+          <% end %>
         <% elsif attribute == :password_confirmation %>
-          <li>上記と同じパスワードを入力してください</li>
+          <% if resource.errors.include?(:password_confirmation) %>
+            <li>上記と同じパスワードを入力してください</li>
+          <% end %>
         <% else %>
           <li><%= message %></li>
         <% end %>
@@ -32,4 +52,3 @@
     </ul>
   </div>
 <% end %>
-
