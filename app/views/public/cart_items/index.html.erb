@@ -1,5 +1,6 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h2>ショッピングカート</h2>
+
+<%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
 
 <table>
   <thead>
@@ -9,15 +10,20 @@
   <tbody>
   <!--< % @cart_item.each do |cart_item| %>-->
   <!--    <tr>-->
-  <!--        <td>< %= (cart_item.item.price * 1.1).floor %></td>-->
-          <!--item.rbに
+  <!--        <td>消す方< %= (cart_item.item.price * 1.1).floor %></td>-->
+  <!--        item.rbに-->
   <!--        def with_tax_price-->
   <!--          (price * 1.1).floor-->
-  <!--        endを入力したらコメントアウト文に変更-->-->
-          <!--<td>< %= cart_item.item.with_tax_price%></td>-->
+  <!--        endを入力したらコメントアウト文に変更-->
+  <!--        <td>< %= cart_item.item.with_tax_price%></td>-->
   <!--        <td>< %= cart_item.subtotal %></td>-->
+  <!--        <td>< %= link_to '削除する', cart_item_path, class: "btn btn-danger" %><td>-->
   <!--        < % @total_price +=  cart_item.subtotal %>-->
   <!--    </tr>-->
   <!--< % end %>-->
   </tbody>
 </table>
+
+<!--< %= link_to '買い物を続ける',items_path, class: "btn btn-primary" %>-->
+
+<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
