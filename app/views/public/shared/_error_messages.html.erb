@@ -26,7 +26,7 @@
             <li>郵便番号を入力してください</li>
           <% end %>
         <% elsif attribute == :address %>
-          <% if resource.errors.include?(:address) %>
+          <% if resource.errors.include?(:address) && resource.errors[attribute].empty? %>
             <li>住所を入力してください</li>
           <% end %>
         <% elsif attribute == :phone_number %>
