@@ -1,38 +1,44 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<header>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3" style="padding: 0px; margin: 0px;">
+    <div class="header container-fluid">
+      <div class="col-2">
+        <div class="logo font-weight-bold">Naganocake</div>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-          
-          <!--カスタマーログイン時-->
-          <% if customer_signed_in? %>
-            <li><%= link_to "マイページ", about_path %></li>
-            <li><%= link_to "商品一覧", admin_items_path %></li>
-            <li><%= link_to "カート", admin_items_path %></li>
-            <li><%= link_to "ログアウト", destroy_customer_session_path %></li>
-            
-          <!--管理者ログイン時-->
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "商品一覧", admin_items_path %></li>
-            <li><%= link_to "会員一覧", admin_customers_path %></li>
-            <li><%= link_to "注文履歴一覧", admin_path %></li>
-            <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path %></li>
-            
-          <% else %>
-          
-            <!--ログイン前-->
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "商品一覧", admin_items_path %></li>
-            <li><%= link_to "新規登録", new_customer_registration_path %></li>
-            <li><%= link_to "ログイン", new_customer_session_path %></li>
-          <% end %>
-          </ul>
+        <div class="collapse navbar-collapse justify-content-around">
+          <ul class="navbar-nav">
+
+        <!--カスタマーログイン時-->
+        <% if customer_signed_in? %>
+          <li><div class="header-content"><%= link_to "マイページ", about_path %></div></li>
+          <li><div class="header-content"><%= link_to "商品一覧", admin_items_path %></div></li>
+          <li><div class="header-content"><%= link_to "カート", about_path %></div></li>
+          <li><div class="header-content"><%= link_to "ログアウト", destroy_customer_session_path %></div></li>
+
+        <!--管理者ログイン時-->
+        <% elsif admin_signed_in? %>
+          <li><div class="header-content"><%= link_to "商品一覧", admin_items_path %></div></li>
+          <li><div class="header-content"><%= link_to "会員一覧", admin_customers_path %></div></li>
+          <li><div class="header-content"><%= link_to "注文履歴一覧", admin_path %></div></li>
+          <li><div class="header-content"><%= link_to "ジャンル一覧", admin_genres_path %></div></li>
+          <li><div class="header-content"><%= link_to "ログアウト", destroy_admin_session_path %></div></li>
+
+        <% else %>
+
+          <!--ログイン前-->
+          <!--こっちにするかは検討中 <li><div class="header-content"><a href="/about">About</a></div></li>-->
+          <li><div class="header-content"><%= link_to "About", about_path %></div></li>
+          <li><div class="header-content"><%= link_to "商品一覧", admin_items_path %></div></li>
+          <li><div class="header-content"><%= link_to "新規登録", new_customer_registration_path %></div></li>
+          <li><div class="header-content"><%= link_to "ログイン", new_customer_session_path %></div></li>
+        <% end %>
+        </ul>
       </div>
+        <div class="col-3">
+          検索フォーム
+        </div>
     </div>
   </nav>
 </header>
