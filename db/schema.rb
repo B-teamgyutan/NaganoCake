@@ -75,15 +75,6 @@ ActiveRecord::Schema.define(version: 2024_07_21_064233) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "mailing_addresses", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id　"
     t.string "post_code"
