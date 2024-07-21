@@ -7,6 +7,10 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.update(cart_item_params)
+    @cart_items = current_customer.cart_items.all
+    @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def destroy
@@ -17,7 +21,7 @@ class Public::CartItemsController < ApplicationController
   # end
 
   def create
-    # if cart_item_e
+    # if cart_item_ｚ
   end
 
   private
