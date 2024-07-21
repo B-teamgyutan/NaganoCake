@@ -1,2 +1,79 @@
 @use '~bootstrap/scss/bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link {
+color: #FFF;
+}
+
+body {
+}
+
+.header {
+  color: #facb72;
+  background-color: #4e5e75;
+}
+
+.logo {
+  background-color: #272b56;
+  height: 70px;
+}
+
+.header-content {
+  color:#ffffff;
+  display: inline-flex;
+  padding: 1.2rem 1.5rem;
+  white-space: nowrap;
+}
+
+// ジャンル
+.genre {
+  color: #facb72;
+  background: rgba(#ffffff, 0.4);
+  height: 100%;
+  text-align: center;
+  list-style:none
+}
+
+.genre-content {
+  padding: 1.2rem 1.5rem;
+  white-space: nowrap;
+}
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 400px; /* 高さ */
+  background-color: #253782;
+  // background-image: url(img/mv.jpg);
+  // background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  // background-position: center; /* 背景画像を中央に配置 */
+}
+
+.newitem {
+
+}
+
+.new-h {
+  color: #facb72;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.item {
+  padding: 0 5rem;
+  column-gap: var(--grid-horizontal-spacing);
+}
+
+.footer {
+  color: #facb72;
+  background-color: #4e5e75;
+  display: flex;
+}
+
+.footer-content {
+}
