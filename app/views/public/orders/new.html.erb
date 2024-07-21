@@ -3,11 +3,12 @@
 
 <%= form_with model: @order do |f| %>
   <p>支払方法</p>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
-  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+  <%= f.radio_button :payment_method, "credit_card", checked: true %>
+  <%= f.label :payment_method_credit_card, "クレジットカード" %>
 
-  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+  <%= f.radio_button :payment_method, "transfer" %>
+  <%= f.label :payment_method_transfer, "銀行振込"%>
+
 <% end %>
 
 <p>お届け先</p>
@@ -16,10 +17,25 @@
 <!--〇登録済み住所から選択-->
 <!--< %= f.radio_button :address_type, "registered_address" %>-->
 
-<!--< %= f.radio_button :address_type, "new_address" %>-->
-<!--< %= f.label :address_type, "新しいお届け先" %>-->
 <%= form_with model: @order do |f| %>
-  <p>郵便番号（ハイフンなし）<%= f.text_field :post_code, placeholder: "0000000" %></p>
-  <p>住所<%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></p>
-  <p>宛名<%= f.text_field :name, placeholder: "令和道子" %></p>
+  <%= f.radio_button :address_type, "new_address" %>
+  <%= f.label :address_type, "新しいお届け先" %>
+  <div class="form-group row">
+    <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-form-label col-sm-2" %>
+    <div class="col-sm-3">
+      <%= f.text_field :post_code, class: "form-control", placeholder: "0000000" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :address, "住所", class: "col-form-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :name, "宛名", class: "col-form-label col-sm-2" %>
+    <div class="col-sm-3">
+      <%= f.text_field :name, class: "form-control", placeholder: "令和道子" %>
+    </div>
+  </div>
 <% end %>
