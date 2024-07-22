@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2024_07_22_064357) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "post_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+  
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -38,6 +47,13 @@ ActiveRecord::Schema.define(version: 2024_07_22_064357) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "post_code"
+    t.string "address"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_deleted", default: false
@@ -56,15 +72,6 @@ ActiveRecord::Schema.define(version: 2024_07_22_064357) do
     t.text "item_details", null: false
     t.integer "price", null: false
     t.boolean "is_sold_out", default: true, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "mailing_addresses", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
