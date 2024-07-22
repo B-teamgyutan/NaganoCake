@@ -24,7 +24,7 @@
 
   <tr>
     <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
+    <td><%= @customer.phone_number %></td>
   </tr>
 
   <tr>
@@ -34,7 +34,7 @@
   </table>
 
     <h3><b>配送先</b></h3>
-    <%= "一覧を見る" %>
+    <%= link_to "一覧を見る", addresses_path %>
 
     <h3><b>注文履歴</b></h3>
-    <%= "一覧を見る" %>
+    <%= link_to "一覧を見る", orders_path %>
