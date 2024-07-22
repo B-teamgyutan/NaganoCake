@@ -44,4 +44,7 @@ end
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
+    devise_scope :admin do
+    get '/admin/sign_out', to: 'admin/sessions#destroy'
+  end
 end
