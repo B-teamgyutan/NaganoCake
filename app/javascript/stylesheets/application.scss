@@ -6,8 +6,21 @@
   box-sizing: border-box;
 }
 
+/* クリックしていないリンク */
 a:link {
-color: #FFF;
+  color: #FFF;
+}
+/* クリック済みのリンク */
+a:visited{
+	color: #FFF;
+}
+/* カーソルを合わせたとき */
+a:hover{
+	color:#facb72;
+}
+/* 選択中のリンク */
+a:active{
+	color:#facb72;
 }
 
 body {
@@ -32,7 +45,7 @@ body {
 
 // ジャンル
 .genre {
-  color: #facb72;
+  color: #e94c46;
   background: rgba(#ffffff, 0.4);
   height: 100%;
   text-align: center;
