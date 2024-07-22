@@ -1,7 +1,7 @@
 <!--/orders/new-->
 <h2>注文情報入力</h2>
 
-<%= form_with model: @order do |f| %>
+<%= form_with model: @order, local: true do |f| %>
   <p>支払方法</p>
   <%= f.radio_button :payment_method, "credit_card", checked: true %>
   <%= f.label :payment_method_credit_card, "クレジットカード" %>
@@ -9,15 +9,14 @@
   <%= f.radio_button :payment_method, "transfer" %>
   <%= f.label :payment_method_transfer, "銀行振込"%>
 
-<% end %>
+  <p>お届け先</p>
+  <%= f.radio_button :address_type,"member_address", checked: true %>
+  <%= f.label :address_type, "ご自身の住所" %>
+  <p>〒<%= current_customer.post_code%> <%=current_customer.address %> <%=current_customer.full_name%></p>
+  <!--< %= f.radio_button :address_type, "registered_address" %>-->
+  <!--< %= f.label :address_type, "登録済み住所" %>-->
+  <!--< %= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>-->
 
-<p>お届け先</p>
-<!--〇ご自身の住所-->
-<!--< %= f.radio_button :address_type,"member_address", checked: true %>-->
-<!--〇登録済み住所から選択-->
-<!--< %= f.radio_button :address_type, "registered_address" %>-->
-
-<%= form_with model: @order do |f| %>
   <%= f.radio_button :address_type, "new_address" %>
   <%= f.label :address_type, "新しいお届け先" %>
   <div class="form-group row">
