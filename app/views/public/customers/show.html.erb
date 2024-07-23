@@ -1,20 +1,20 @@
 <h4>マイページ</h4>
- <h3><b>登録情報<b></h3>
+ <h4>登録情報</h4>
  <%= link_to "編集する", customers_information_edit_path %>
 <table>
   <tr>
     <td>氏名</td>
-    <td><%= @customer.last_name %></td>
+    <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
   </tr>
 
   <tr>
     <td>カナ</td>
-    <td><%= @customer.last_name_kana %></td>
+    <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
   </tr>
 
   <tr>
     <td>郵便番号</td>
-    <td><%= @customer.post_code %><>
+    <td><%= @customer.post_code %></td>
   </tr>
 
   <tr>
@@ -33,8 +33,8 @@
   </tr>
   </table>
 
-    <h3><b>配送先</b></h3>
+    <h4>配送先</h4>
     <%= link_to "一覧を見る", addresses_path %>
 
-    <h3><b>注文履歴</b></h3>
+    <h4>注文履歴</h4>
     <%= link_to "一覧を見る", orders_path %>
