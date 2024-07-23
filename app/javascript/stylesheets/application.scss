@@ -66,6 +66,14 @@ body {
   background-position: center;
 }
 
+.sub-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 1000px; /* 高さ */
+  background-image: url('/images/deva-williamson-0hnqS3Stj0w-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 .newitem {
 
 }
@@ -89,4 +97,11 @@ body {
 }
 
 .footer-content {
+}
+
+.abouttext {
+  justify-content: center;
+  padding:5rem;
+  display: flex;
+  flex-direction: column;
 }
