@@ -43,6 +43,10 @@ body {
   white-space: nowrap;
 }
 
+.navbar .container-fluid {
+  justify-content: start;
+}
+
 // ジャンル
 .genre {
   color: #e94c46;
@@ -99,9 +103,13 @@ body {
 .footer-content {
 }
 
+.about {
+  
+}
+
 .abouttext {
   justify-content: center;
-  padding:5rem;
+  padding:4rem;
   display: flex;
   flex-direction: column;
 }

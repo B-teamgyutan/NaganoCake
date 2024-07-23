@@ -5,17 +5,17 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  
+  has_many :orders, dependent: :destroy
   def full_name
     last_name + '' + first_name
   end
-  
+
   def full_name_kana
     last_name_kana + '' + first_name_kana
   end
-  
+
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
-  
+
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, format: { with: KATAKANA_REGEXP }
@@ -23,5 +23,5 @@ class Customer < ApplicationRecord
   validates :post_code, length: { is: 7 }
   validates :phone_number, presence: true
   validates :address, presence: true
-  
+
 end
