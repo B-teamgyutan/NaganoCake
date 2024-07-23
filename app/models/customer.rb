@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :addresses, dependent: :destroy       
   
   def full_name
     last_name + '' + first_name
@@ -21,6 +22,5 @@ class Customer < ApplicationRecord
   validates :post_code, length: { is: 7 }
   validates :phone_number, presence: true
   validates :address, presence: true
-  validates :password_confirmation, presence: true
   
 end
