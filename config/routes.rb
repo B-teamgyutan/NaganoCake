@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :addresses, except: [:new, :show]
+    resources :'addresses', only:[:index, :create, :edit, :update, :destroy]
   end
 
   devise_scope :customer do

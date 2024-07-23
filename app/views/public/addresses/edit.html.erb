@@ -1,13 +1,13 @@
 <% provide(:title, "配送先編集") %>
 <% if flash[:notice] %>
-  <div class="alert alert-danger text-center">
-    <%= flash[:notice] %>
-  </div>
+	<div class="alert alert-danger text-center">
+			<%= flash[:notice] %>
+	</div>
 <% end %>
 <div class="container">
 <div class="mailing-form">
 <div class="col-lg-4">
-  <h4>配送先登録 / 一覧</h4>
+	<h4>配送先登録 / 一覧</h4>
 </div>
 <%= render 'form' ,address: @address, submitname: "編集する" , btnclass: "btn btn-primary"%>
 </div>
