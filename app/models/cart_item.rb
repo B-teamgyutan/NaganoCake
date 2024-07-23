@@ -1,7 +1,8 @@
 class CartItem < ApplicationRecord
+  belongs_to :customer
+  belongs_to :item
   
-  
-  current_user.cart_items.destroy_all
+   #current_customer.cart_items.destroy_all
 
   # 小計を求めるメソッド
   def subtotal

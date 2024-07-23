@@ -2,28 +2,36 @@
 
 <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
 
-<table>
-  <thead>
-      <th>単価(税込)</th>
-      <th>小計</th>
-  </thead>
-  <tbody>
-  <!--< % @cart_item.each do |cart_item| %>-->
-  <!--    <tr>-->
-  <!--        <td>消す方< %= (cart_item.item.price * 1.1).floor %></td>-->
-  <!--        item.rbに-->
-  <!--        def with_tax_price-->
-  <!--          (price * 1.1).floor-->
-  <!--        endを入力したらコメントアウト文に変更-->
-  <!--        <td>< %= cart_item.item.with_tax_price%></td>-->
-  <!--        <td>< %= cart_item.subtotal %></td>-->
-  <!--        <td>< %= link_to '削除する', cart_item_path, class: "btn btn-danger" %><td>-->
-  <!--        < % @total_price +=  cart_item.subtotal %>-->
-  <!--    </tr>-->
-  <!--< % end %>-->
-  </tbody>
-</table>
+<table class="table table-bordered">
+      <tr class="table-active">
+         <th>商品名</th>
+         <th>単価(税込み)</th>
+         <th>数量</th>
+         <th>小計</th>
+         <!--タグの中にbrタグを入れることで空白のセルを作れる-->
+         <th><br></th>
+      </tr>
+       <% @sum = 0 %>
+       <% @cart_item.each do |cart_item| %>
+         <tr>
+            <td>
+               <%= attachment_image_tag cart_item.item, :image, :fill, 300, 300, format: 'jpeg' %>
+               <%= cart_item.item.name %>
+            </td>
+            <td><%= cart_item.item.total_payment %></td>
+            <td>
+               <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
+                  <%= f.select :amount, *[1..10] %>
+                  <%= f.submit "変更" , class: "btn btn-success" %>
+               <% end %>
+            </td>
+            <td><%= cart_item.subtotal %></td>
+            <td><%= link_to "削除", destroy_cart_item_path(cart_item.id) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger"%></td>
+         </tr>
+         <% @sum += cart_item.subtotal %>
+   </table>
+<% end %>
+<%= link_to "買い物を続ける" , root_path , class: "btn btn-primary" %>
+合計金額 <%= @sum %>
 
-<!--< %= link_to '買い物を続ける',items_path, class: "btn btn-primary" %>-->
-
-<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
+<%= link_to "情報入力に進む" , new_order_path , class: "btn btn-success" %>
