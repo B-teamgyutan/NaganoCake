@@ -1,0 +1,52 @@
+<h3>商品新規登録</h3>
+<%= form_with model: [:admin, @item], local: true, do |f| %>
+  <div>
+    <%= f.label :image, '商品画像' %>
+    <div>
+      <%= f.file_field :image %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :name, '商品名' %>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :description, '商品説明' %>
+    <div>
+      <%= f.text_area :description %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :price, '税抜価格' %>
+    <div>
+      <%= f.number_field :price %>
+      <div>
+        <span>円</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+  <%= f.label :status, '販売ステータス' %>
+  <div>
+    <div>
+      <%= f.radio_button :status, 'on_sale', checked: @item.status == 'on_sale', class: 'custom-control-input', id: 'status-on-sale' %>
+      <%= f.label :status, '販売中', class: 'custom-control-label', for: 'status-on-sale' %>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <%= f.radio_button :status, 'off_sale', checked: @item.status == 'off_sale', class: 'custom-control-input', id: 'status-off-sale' %>
+      <%= f.label :status, '販売停止中', class: 'custom-control-label', for: 'status-off-sale' %>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+  <div>
+    <div>
+      <%= f.submit '新規投稿' %>
+    </div>
+  </div>
+<% end %>
