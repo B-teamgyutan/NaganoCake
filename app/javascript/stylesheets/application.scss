@@ -1,0 +1,115 @@
+@use '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* クリックしていないリンク */
+a:link {
+  color: #FFF;
+}
+/* クリック済みのリンク */
+a:visited{
+	color: #FFF;
+}
+/* カーソルを合わせたとき */
+a:hover{
+	color:#facb72;
+}
+/* 選択中のリンク */
+a:active{
+	color:#facb72;
+}
+
+body {
+}
+
+.header {
+  color: #facb72;
+  background-color: #4e5e75;
+}
+
+.logo {
+  background-color: #272b56;
+  height: 70px;
+}
+
+.header-content {
+  color:#ffffff;
+  display: inline-flex;
+  padding: 1.2rem 1.5rem;
+  white-space: nowrap;
+}
+
+.navbar .container-fluid {
+  justify-content: start;
+}
+
+// ジャンル
+.genre {
+  color: #e94c46;
+  background: rgba(#ffffff, 0.4);
+  height: 100%;
+  text-align: center;
+  list-style:none
+}
+
+.genre-content {
+  padding: 1.2rem 1.5rem;
+  white-space: nowrap;
+}
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 400px; /* 高さ */
+  //background-color: #253782;
+  background-image: url('/images/food-photographer-jennifer-pallian-8Jg4U4xHu-o-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.sub-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 1000px; /* 高さ */
+  background-image: url('/images/deva-williamson-0hnqS3Stj0w-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.newitem {
+
+}
+
+.new-h {
+  color: #facb72;
+  text-align: center;
+  font-size: 30px;
+  margin: 20px;
+}
+
+.item {
+  padding: 0 5rem;
+  column-gap: var(--grid-horizontal-spacing);
+}
+
+.footer {
+  color: #facb72;
+  background-color: #4e5e75;
+  display: flex;
+}
+
+.footer-content {
+}
+
+.about {
+  
+}
+
+.abouttext {
+  justify-content: center;
+  padding:4rem;
+  display: flex;
+  flex-direction: column;
+}

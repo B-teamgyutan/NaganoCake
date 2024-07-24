@@ -1,0 +1,9 @@
+<%= form_with model: address do |f| %>
+	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :郵便番号 %></div><div class="col-lg-2"><%= f.text_field :post_code, value: address.post_code,placeholder: "半角 / ハイフン不要" %></div></div>
+	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :住所 %></div><div class="col-lg-2"><%= f.text_field :address,class: 'address', value: address.address %></div></div>
+	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :宛名 %></div><div class="col-lg-2"><%= f.text_field :name, value: address.name  %></div><div class="col-lg-4">
+		<%= f.hidden_field :customer_id, value: current_customer.id %>
+		<%= f.submit submitname, class: btnclass %>
+	</div>
+	</div>
+<% end %>
