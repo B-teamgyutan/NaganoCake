@@ -2,10 +2,11 @@
   <nav class="navbar navbar-expand-sm navbar-light mb-3" style="padding: 0px; margin: 0px;">
     <div class="header container-fluid">
       <div class="col-2">
-        <div class="logo font-weight-bold">Naganocake</div>
+        <%= link_to root_path,class: 'nav-link text-light' do %>
+          <i class="fa-solid fa-cake-candles"></i>
+        <% end %>
       </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-around">
           <ul class="navbar-nav">
