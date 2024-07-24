@@ -12,36 +12,36 @@
 
 /* クリックしていないリンク */
 a:link {
-  color: #FFF;
+	color: #402B3A;
 }
 /* クリック済みのリンク */
 a:visited{
-	color: #FFF;
+	color: #402B3A;
 }
 /* カーソルを合わせたとき */
 a:hover{
-	color:#facb72;
+	color: #D63484;
 }
 /* 選択中のリンク */
 a:active{
-	color:#facb72;
+	color: #D63484;
 }
 
 body {
+  color: #402B3A;
+}
+
+.text {
+  font-size: 14px;
+  margin-top: 14px;
 }
 
 .header {
-  color: #facb72;
-  background-color: #4e5e75;
-}
-
-.logo {
-  background-color: #272b56;
-  height: 70px;
+  background-color: #F8F4EC;
 }
 
 .header-content {
-  color:#ffffff;
+  color:#402B3A;
   display: inline-flex;
   padding: 1.2rem 1.5rem;
   white-space: nowrap;
@@ -53,7 +53,7 @@ body {
 
 // ジャンル
 .genre {
-  color: #e94c46;
+  color: #D63484;
   background: rgba(#ffffff, 0.4);
   height: 100%;
   text-align: center;
@@ -82,12 +82,7 @@ body {
   background-position: center;
 }
 
-.newitem {
-
-}
-
 .new-h {
-  color: #facb72;
   text-align: center;
   font-size: 30px;
   margin: 20px;
@@ -99,16 +94,8 @@ body {
 }
 
 .footer {
-  color: #facb72;
-  background-color: #4e5e75;
+  background-color: #F8F4EC;
   display: flex;
-}
-
-.footer-content {
-}
-
-.about {
-
 }
 
 .abouttext {
@@ -116,4 +103,64 @@ body {
   padding:4rem;
   display: flex;
   flex-direction: column;
+}
+
+.table {
+  color: #F8F4EC;
+  background-color: #402B3A;
+}
+
+// ボタン関連
+.btn,
+a.btn,
+button.btn {
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background-color: #402B3A;
+  border-radius: 0.5rem;
+}
+
+.btn-flat {
+  overflow: hidden;
+  color: #fff;
+  border-radius: 0;
+  background: #000;
+}
+
+.btn-flat span {
+  position: relative;
+}
+
+.btn-flat:before {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 150%;
+  height: 500%;
+  content: '';
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-70%) rotate(135deg);
+  transform: translateX(-98%) translateY(-70%) rotate(135deg);
+  background: #FF9BD2;
+}
+
+.btn-flat:hover:before {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(135deg);
+  transform: translateX(-9%) translateY(-25%) rotate(135deg);
 }
