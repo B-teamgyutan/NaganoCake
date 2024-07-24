@@ -13,7 +13,19 @@ class Customer < ApplicationRecord
   def full_name_kana
     last_name_kana + '' + first_name_kana
   end
-
+  
+  def customer_status
+    if is_deleted == true
+      "退会"
+    else
+      "有効"
+    end
+  end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
   validates :last_name, presence: true
