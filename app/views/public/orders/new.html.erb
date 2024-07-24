@@ -1,5 +1,5 @@
 <!--/orders/new-->
-<div class="container p-3">
+<div class="container">
   <div class="row">
     <div class="col-md-12">
       <h2>注文情報入力</h2>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <br>
-        <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
+        <%= link_to "確認画面へ進む",confirm_orders_path, class: "btn btn-info" %>
       <% end %>
     </div>
   </div>
