@@ -23,10 +23,10 @@
           <%= f.label :is_sold_out, '販売ステータス' %>
           <div>
             <div>
-              <%= f.radio_button :is_sold_out, Item.is_sold_outs.key(0) %>
-              <%= f.label :is_sold_out_on_sale, Item.is_sold_outs_i18n[:on_sale] %>
-              <%= f.radio_button :is_sold_out, Item.is_sold_outs.key(1) %>
-              <%= f.label :is_sold_out_off_sale, Item.is_sold_outs_i18n[:off_sale] %>
+              %= f.radio_button :is_sold_out, true %>
+              <%= f.label :is_sold_out_on_sale, "販売中"  %>
+              <%= f.radio_button :is_sold_out, false %>
+              <%= f.label :is_sold_out_off_sale, "販売停止中" %>
             </div>
           </div>
           <%= f.submit '新規投稿' %>
