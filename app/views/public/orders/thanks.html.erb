@@ -3,8 +3,11 @@
   <div class="row justify-content-center">
     <div class="col-md-12 text-center">
       <h3>ご注文ありがとうございました！</h3>
-      <br>
-      <%= link_to "トップページ", root_path, class: "btn btn-success" %>
+      <p>またのご利用をお待ちしております。</p>
+      <p>
+        ご注文内容のご確認はこちら
+        <%= link_to "注文履歴", orders_path, class: "btn btn-success" %>
+      </p>
     </div>
   </div>
 </div>

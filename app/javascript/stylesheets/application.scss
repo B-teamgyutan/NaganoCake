@@ -1,9 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* クリックしていないリンク */
@@ -101,8 +105,13 @@ body {
 }
 
 .table {
-  color: #F8F4EC;
-  background-color: #402B3A;
+  color: #402B3A;
+  background-color: #F8F4EC;
+}
+
+table thead :first-child {
+	color: #F8F4EC;
+	background: #402B3A;
 }
 
 // ボタン関連
