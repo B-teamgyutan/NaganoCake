@@ -1,5 +1,10 @@
 class Admin::ItemsController < ApplicationController
 
+  def index
+    @item = Item.new
+    @items = Item.all
+  end
+
   def new
     @item = Item.new
   end
@@ -13,11 +18,6 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def index
-    @item = Item.new
-    @items = Item.all
-  end
-
   def show
     @item = Item.find(params[:id])
   end
@@ -28,8 +28,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_item_path(@item)
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item), notice: 'ステータスを更新しました。'
+    else
+      render :edit
+    end
   end
 
 
