@@ -1,0 +1,8 @@
+<% if customer_signed_in? %>
+	<%= form_with model: cart_item ,local: true do |f| %>
+		<%= f.select :count,(1..20).each{ |i| p [i] } ,include_blank: ">>　個数選択"%>
+		<%= f.hidden_field :item_id, value: @item.id %>
+		<%= f.hidden_field :customer_id, value: current_customer.id %>
+		<%= f.submit "カートに入れる", class: 'btn btn-primary'%>
+	<% end %>
+<% end %>
