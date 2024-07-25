@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h4>商品新規登録</h4>
-      <%= form_with model: [:admin, @item], local: true, do |f| %>
+      <h4>商品編集</h4>
+      <%= form_with(model: [:admin, @item]) do |f| %>
         <div>
           <%= f.label :image, '商品画像' %>
           <%= f.file_field :image %>
@@ -12,12 +12,12 @@
           <%= f.text_field :name %>
         </div>
         <div>
-          <%= f.label :description, '商品説明' %>
-          <%= f.text_area :description %>
+          <%= f.label :item_details, '商品説明' %>
+          <%= f.text_area :item_details %>
         </div>
         <div>
           <%= f.label :price, '税抜価格' %>
-          <%= f.number_field :price %>円
+            <%= f.number_field :price %>円
         </div>
         <div>
           <%= f.label :is_sold_out, '販売ステータス' %>
@@ -28,10 +28,7 @@
           <%= f.radio_button :is_sold_out, Item.is_sold_outs.key(1) %>
           <%= f.label :is_sold_out_off_sale, Item.is_sold_outs_i18n[:off_sale] %>
         </div>
-          <div>
-            <%= f.submit '新規投稿' %>
-          </div>
-        </div>
+        <%= f.submit '変更を保存', class:"btn btn-success" %>
       <% end %>
     </div>
   </div>
