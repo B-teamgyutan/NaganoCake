@@ -1,8 +1,6 @@
 <h2>ショッピングカート</h2>
 
-<%= link_to destroy_all_cart_items_path, method: :delete, class: "btn btn-flat" do%>
-  <span>カートを空にする</span>
-<% end %>
+<%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
 
 <table class="table table-bordered">
   <tr class="table-active">
@@ -35,8 +33,8 @@
 </table>
   <%= link_to root_path, class: "btn btn-flat" do %>
     <span>買い物を続ける</span>
-<% end %>
+  <% end %>
 合計金額：<%= @sum %>
-<%= link_to new_order_path, class: "btn btn-flat" do%>
-  <span>情報入力に進む</span>
-<% end %>
+  <%= link_to new_order_path, class: "btn btn-flat" do%>
+    <span>情報入力に進む</span>
+  <% end %>

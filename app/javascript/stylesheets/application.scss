@@ -37,7 +37,6 @@ body {
 }
 
 .header {
-  background-color: #F8F4EC;
 }
 
 .header-content {
@@ -168,4 +167,60 @@ button.btn {
 .btn-flat:hover:before {
   -webkit-transform: translateX(-9%) translateY(-25%) rotate(135deg);
   transform: translateX(-9%) translateY(-25%) rotate(135deg);
+}
+
+// ハンバーガーメニュー
+.openbtn{
+	/*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+	position: relative;
+	background: #402B3A;
+	cursor: pointer;
+  width: 50px;
+  height: 50px;
+	border-radius: 5px;
+}
+
+/*ボタン内側*/
+.openbtn span{
+  display: inline-block;
+  transition: all .4s;/*アニメーションの設定*/
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+	background: #fff;
+  width: 45%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+/*activeクラスが付与されると線が回転して×に*/
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;/*真ん中の線は透過*/
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
 }
