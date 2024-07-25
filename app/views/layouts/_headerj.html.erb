@@ -1,16 +1,19 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-light mb-3" style="padding: 0px; margin: 0px;">
+  <nav class="navbar navbar-expand-md navbar-light mb-3" style="padding-top: 16px; margin: 0px;">
     <div class="header container-fluid">
-        <%= link_to root_path, class: 'nav-link' do %>
-          ながのCAKE<i class="fa-solid fa-cake-candles"></i>
-        <% end %>
+      <%= link_to root_path, class: 'nav-link' do %>
+        <%= image_tag asset_path('font.png'), size: '108x14' %> <i class="fa-solid fa-cake-candles"></i>
+      <% end %>
 
       <!-- ハンバーガーメニュー -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
+      <div class="openbtn navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" onclick="document.querySelector('.openbtn').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-around">
+        <ul class="navbar-nav">
 
           <!--カスタマーログイン時-->
           <% if customer_signed_in? %>

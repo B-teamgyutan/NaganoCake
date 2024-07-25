@@ -4,10 +4,20 @@
   <main>
     <!--メイン画像-->
   <div class="main-visual">
-    <!--ジャンル検索欄-->
-    <%= render 'layouts/genres' %>
+  <!--ジャンル検索欄-->
+  <%= render 'layouts/genres' %>
   </div>
   </main>
+    <div class="main-visual-content">
+      <h4 class="main-visual-text">
+        ようこそ、ながのCAKEへ！
+      </h4>
+      <p class="main-visual-name">
+        このサイトでは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧は出来ますが、<br>
+        購入には会員登録が必要になります。<br>
+      </p>
+    </div>
   <!--新着商品-->
   <item>
     <section class="newitem">
@@ -18,7 +28,7 @@
         <!--できれば画像・商品名・値段でテンプレート化して持ってきたい-->
     <ul>
       <il><div class="item-blk col p-3">
-        <a class="item-blk-image">
+        <a class="item-blk-image"></a>
         <p class="item-blk-date">商品名</p>
         <p class="price">値段</h3>
       </div></il>
@@ -26,11 +36,6 @@
       </div>
     </div>
   </item>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>

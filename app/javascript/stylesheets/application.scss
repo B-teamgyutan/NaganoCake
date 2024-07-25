@@ -50,6 +50,12 @@ body {
   justify-content: start;
 }
 
+.nav-link {
+    display: block;
+    padding: 0.5rem;
+    padding-right: 1rem;
+}
+
 // ジャンル
 .genre {
   color: #D63484;
@@ -67,10 +73,49 @@ body {
 .main-visual {
   width: 100%; /* 横幅いっぱい */
   height: 400px; /* 高さ */
-  //background-color: #253782;
   background-image: url('/images/food-photographer-jennifer-pallian-8Jg4U4xHu-o-unsplash.jpg');
   background-size: cover;
   background-position: center;
+}
+
+.main-visual-content {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: rgba(#ffffff, 0.4);
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 40px;
+  overflow: hidden;
+}
+
+.main-visual-content:after {
+  position: absolute;
+  content: '';
+  top:0;
+  left: 0;
+  background: #F8F4EC; /* 背景色を変更 */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateX(-100%);
+  animation-name: main-visual-content_slide;
+  animation-duration:.5s;
+  animation-fill-mode: forwards;
+  transform: translateX(-100%);
+}
+@keyframes main-visual-content_slide {
+  0% {
+    transform: translate(-100%,0);
+    background: rgba(#ffffff, 0.4); /* 初期の背景色を設定 */
+  }
+  100% {
+    transform: translate(0,0);
+    background: #F8F4EC; /* 最終的な背景色を設定 */
+  }
+}
+
+.main-visual-name {
+  margin-top: 30px; /* 上側の外側の余白 */
 }
 
 .sub-visual {

@@ -4,7 +4,9 @@
       <h2>マイページ</h2>
        <div class="row">
         <div class="col-md">
-          <h4>登録情報　　<%= link_to "編集する", customers_information_edit_path, class:"btn btn-primary" %></h4>
+          <h4>登録情報　　<%= link_to customers_information_edit_path, class: "btn btn-flat" do %>
+            <span>編集する</span>
+          <% end %>
           <table class="table">
             <tr>
               <td>氏名</td>
