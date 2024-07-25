@@ -12,14 +12,16 @@
               <th>ステータス</th>
             </tr>
           </thead>
-          <% @customers.each do |customer| %>
-            <tr>
-              <td><%= customer.id %></td>
-              <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-              <td><%= customer.email %></td>
-              <td><%= customer.customer_status %></td>
-            </tr>
-          <% end %>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+                <td><%= customer.email %></td>
+                <td><%= customer.customer_status %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
     </div>
   </div>

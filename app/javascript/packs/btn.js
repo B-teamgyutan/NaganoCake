@@ -1,7 +1,4 @@
-// ハンバーガーメニューの開閉処理
-document.querySelector('.openbtn').addEventListener('click', function() {
-  if (document.querySelector('.openbtn').classList.contains('active')) {
-  }
-  else {
-  }
+$(".openbtn").click(function () {
+    $(this).toggleClass('active');
+    $(".navbar-collapse").fadeOut();
 });

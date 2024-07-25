@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Naganocake</title>
     <meta name="description">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,11 +14,10 @@
   </head>
 
  <body class="d-flex flex-column vh-100">
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/headerj' %>
       <main class="mb-auto">
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
-    <script src="app/javascript/packs/application.js"></script>
   </body>
 </html>
