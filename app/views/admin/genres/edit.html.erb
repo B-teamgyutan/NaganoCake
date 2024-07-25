@@ -1,8 +1,14 @@
-<h4>ジャンル編集</h4>
-
-<%= form_with(model: [:admin, @genre]) do |f| %>
-  <p>ジャンル名　　<%= f.text_field :name %></p>
-  <%= f.submit '変更を保存', class: "btn btn-success" %>
-<% end %>
-
-<!--遷移先は　genre/:id　なのか確認-->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>ジャンル編集</h4>
+      <br>
+        <%= form_with(model: [:admin, @genre]) do |f| %>
+          <div>
+            ジャンル名　　<%= f.text_field :name %>
+              <%= f.submit '変更を保存', class: "btn btn-success" %>
+            <% end %>
+          </div>
+    </div>
+  </div>
+</div>
