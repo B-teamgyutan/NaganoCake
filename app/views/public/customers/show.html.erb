@@ -34,7 +34,11 @@
   </table>
 
     <h4>配送先</h4>
-    <%= link_to "一覧を見る", addresses_path %>
+    <%= link_to addresses_path, class: "btn btn-flat" do %>
+      <span>一覧を見る</span>
+    <% end %>
 
     <h4>注文履歴</h4>
-    <%= link_to "一覧を見る", orders_path %>
+    <%= link_to orders_path, class: "btn btn-flat" do %>
+      <span>一覧を見る</span>
+    <% end %>

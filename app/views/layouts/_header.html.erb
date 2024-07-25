@@ -6,11 +6,16 @@
           ながのCAKE<i class="fa-solid fa-cake-candles"></i>
         <% end %>
       </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-around">
-          <ul class="navbar-nav">
+
+      <!-- ハンバーガーメニュー -->
+      <div class="openbtn" data-toggle="collapse" data-target=".navbar-collapse" onclick="document.querySelector('.openbtn').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-around">
+        <ul class="navbar-nav">
 
           <!--カスタマーログイン時-->
           <% if customer_signed_in? %>
@@ -30,17 +35,17 @@
           <% else %>
 
             <!--ログイン前-->
-            <!--こっちにするかは検討中 <li><div class="header-content"><a href="/about">About</a></div></li>-->
             <li><div class="header-content"><%= link_to "About", about_path %></div></li>
             <li><div class="header-content"><%= link_to "商品一覧", admin_items_path %></div></li>
             <li><div class="header-content"><%= link_to "新規登録", new_customer_registration_path %></div></li>
             <li><div class="header-content"><%= link_to "ログイン", new_customer_session_path %></div></li>
           <% end %>
           </ul>
-        </div>
-        <div class="col-3">
-          検索フォーム
-        </div>
+      </div>
+
+      <div class="col-3">
+        検索フォーム
+      </div>
     </div>
   </nav>
 </header>
