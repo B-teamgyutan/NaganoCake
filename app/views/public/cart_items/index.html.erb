@@ -8,8 +8,7 @@
       <% else %>
         <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
         <br></br>
-    <div class="col-lg-9">
-
+        <div>
           <table class="table table-bordered">
             <tr class="table-active">
               <th>商品名</th>
@@ -22,29 +21,38 @@
             <% @sum = 0 %>
             <% @cart_items.each do |cart_item| %>
               <tr>
-                <td>
+                <td width="400">
                 <div style="max-height: 280px; overflow: hidden;">
                   <%= image_tag cart_item.item.image, class: "img-fluid", style: "" %>
                 </div>
                   <%= cart_item.item.name %>
                 </td>
-                <td><%= cart_item.item.price_with_tax %></td>
-                <td>
+                <td width="60"><%= cart_item.item.price_with_tax %></td>
+                <td width="100">
                   <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
                     <%= f.select :amount, *[1..10] %>
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>
-                <td><%= cart_item.subtotal %></td>
-                <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
+                <td width="60"><%= cart_item.subtotal %></td>
+                <td width="60"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
               </tr>
               <% @sum += cart_item.subtotal %>
             <% end %>
           </table>
+          <div class="container" style="display: flex; justify-content: flex-end;">
+          <div class="col-4 justify-content-end" style="padding: 0; margin: 0;">
+            <table class="table">
+              <tr>
+                <td style="width: 45%; padding-left: 30px;">合計金額</td>
+                <td style=""><%= @sum %></td>
+              </tr>
+            </table>
+          </div>
+          </div>
             <%= link_to root_path, class: "btn btn-flat" do %>
               <span>買い物を続ける</span>
           <% end %>
-          合計金額：<%= @sum %>
           <%= link_to new_order_path, class: "btn btn-flat" do%>
             <span>情報入力に進む</span>
           <% end %>
