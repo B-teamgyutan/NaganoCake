@@ -116,10 +116,10 @@ ActiveRecord::Schema.define(version: 2024_07_24_150608) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id　"
+    t.integer "customer_id"
     t.string "post_code"
-    t.string "address　　"
-    t.string "name　　　"
+    t.string "address"
+    t.string "name"
     t.integer "shipping_cost"
     t.integer "total_payment"
     t.integer "payment_method"

@@ -17,7 +17,7 @@
 		<div class="col-lg-4">
 		<h5>請求情報</h5>
 		<table class="table table-bordered">
-			<tr><th class="active">商品合計</th><td><%= @order.total_payment - @order.postage %>円</td></tr>
+			<tr><th class="active">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %>円</td></tr>
 			<tr><th class="active">配送料</th><td><%= @order.shipping_cost %>円</td></tr>
 			<tr><th class="active">ご請求額</th><td><%= @order.total_payment %>円</td></tr>
 		</table>
