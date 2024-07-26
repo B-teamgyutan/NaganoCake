@@ -1,47 +1,47 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>マイページ</h2>
+      <h4>マイページ</h4>
        <div class="row">
         <div class="col-md">
-          <h4>登録情報 <%= link_to customers_information_edit_path, class: "btn btn-flat" do %>
+          <p>登録情報 <%= link_to customers_information_edit_path, class: "btn btn-flat" do %>
             <span>編集する</span>
           <% end %>
           <table class="table">
             <tr>
-              <td>氏名</td>
-              <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+              <td style="width: 30%; padding-left: 20px;">氏名</td>
+              <td style="width: 70%;"><%= @customer.last_name %>　<%= @customer.first_name %></td>
             </tr>
 
             <tr>
-              <td>カナ</td>
-              <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+              <td style="width: 30%; padding-left: 20px;">カナ</td>
+              <td style="width: 70%;"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
             </tr>
 
             <tr>
-              <td>郵便番号</td>
-              <td><%= @customer.post_code %></td>
+              <td style="width: 30%; padding-left: 20px;">郵便番号</td>
+              <td style="width: 70%;"><%= @customer.post_code %></td>
             </tr>
 
             <tr>
-              <td>住所</td>
-              <td><%= @customer.address %></td>
+              <td style="width: 30%; padding-left: 20px;">住所</td>
+              <td style="width: 70%;"><%= @customer.address %></td>
             </tr>
 
             <tr>
-              <td>電話番号</td>
-              <td><%= @customer.phone_number %></td>
+              <td style="width: 30%; padding-left: 20px;">電話番号</td>
+              <td style="width: 70%;"><%= @customer.phone_number %></td>
             </tr>
 
             <tr>
-              <td>メールアドレス</td>
-              <td><%= @customer.email %></td>
+              <td style="width: 30%; padding-left: 20px;">メールアドレス</td>
+              <td style="width: 70%;"><%= @customer.email %></td>
             </tr>
           </table>
 
-          <h4>配送先  　　<%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></h4>
+          <p>配送先  　　<%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></p>
 
-          <h4>注文履歴  　<%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></h4>
+          <p>注文履歴  　<%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></p>
     </div>
   </div>
 </div>
