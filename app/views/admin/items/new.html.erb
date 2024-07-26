@@ -20,6 +20,10 @@
           <%= f.number_field :price %>円
         </div>
         <div>
+          <%= f.label :genre, 'ジャンル' %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
+        </div>
+        <div>
           <%= f.label :is_sold_out, '販売ステータス' %>
           <div>
             <div>
