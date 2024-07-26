@@ -29,18 +29,23 @@
     <section class="newitem">
       <h2 class="new-h">新着商品</h2>
     </section>
-    <div class="item row row-cols-4 p-4" style="margin-right: 0px;">
-      <div class="product-grid grid grid--rigid grid--2-col grid--3-col-tablet grid--4-col-desktop slider slider--tablet">
-        <!--できれば画像・商品名・値段でテンプレート化して持ってきたい-->
-    <ul>
-      <il><div class="item-blk col p-3">
-        <a class="item-blk-image"></a>
-        <p class="item-blk-date">商品名</p>
-        <p class="price">値段</h3>
-      </div></il>
-    </ul>
+    <div class="row">
+        <% @items.first(4).each do |item| %>
+          <div class="col-md-3">
+            <div class="card mb-4">
+              <%= link_to item_path(item), class: "card-link" do %>
+              <div style="max-width: 100%; max-height: 180px; overflow: hidden; position: relative;">
+                <%= image_tag item.image, class: "card-img-top", style: "object-fit: contain; width: 100%; height: 100%; object-position: center;" %>
+              </div>
+                <div class="card-body">
+                  <h6 class="card-title"><%= item.name %></h6>
+                  <p class="card-text"><%= item.price %>円</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
   </item>
 </body>
 

@@ -1,12 +1,14 @@
 <div class="container">
+  <br></br>
   <h4>ショッピングカート</h4>
-    <div class="col-lg-9">
       <% if @cart_items.empty? %>
         <div class="empty-cart-message">
         <p>お客様のカートに商品はありません。</p>
         </div>
       <% else %>
         <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+        <br></br>
+    <div class="col-lg-9">
 
           <table class="table table-bordered">
             <tr class="table-active">
@@ -21,7 +23,9 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= image_tag cart_item.item.image, class: "img-fluid", style: "max-width: 100%;" %>
+                <div style="max-height: 280px; overflow: hidden;">
+                  <%= image_tag cart_item.item.image, class: "img-fluid", style: "" %>
+                </div>
                   <%= cart_item.item.name %>
                 </td>
                 <td><%= cart_item.item.price_with_tax %></td>

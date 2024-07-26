@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @order = Order.new(order_params)
+    @order = Order.new
     @shipping_fee = 800
     if @order.payment_method == "クレジットカード"
       @order.order_status = 1
