@@ -10,11 +10,13 @@ class Public::CartItemsController < ApplicationController
     @cart_item.update(cart_item_params)
     @cart_items = current_customer.cart_items.all
     @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    redirect_to cart_items_path
   end
 
   def destroy
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all
