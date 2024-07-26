@@ -35,11 +35,8 @@ Rails.application.routes.draw do
 end
 
   scope module: 'customer' do
-    resources :customers, only:[:show, :edit, :update] do
-      member do
-        get 'quit'
-      end
-      end
+    resources :customers, only:[:show, :edit, :update]
+      
     end
 
 
