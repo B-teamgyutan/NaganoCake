@@ -12,18 +12,18 @@
           <td>ステータス</td>
           <td>注文詳細</td>
         </tr>
-        <% form_with model: @orders do |f| %>
+        <% @orders.each do |order| %>
         <tr>
           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= order.address %></td>
           <td>
             <ul class="list-unstyled">
               <% order.order_details.each do |order_detail|  %>
-                <li><%= order_detail.item.name %></li>
+                <li><%= order_detail.item_id %></li>
               <% end %>
             </ul>
           </td>
-          <td><%= order.total_price %></td>
+          <td><%= order.total_payment %></td>
           <td><%= order.status_i18n %></td>
           <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info" %></td>
         </tr>

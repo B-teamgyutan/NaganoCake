@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  # before_action :authenticate_member!, only: [:new, :confirm, :create, :indexm :show, :complete]
+  # before_action :authenticate_member!
 
   def new
     @order = Order.new
@@ -20,34 +20,32 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    @order = Order.new
-    @shipping_fee = 800
-    if @order.payment_method == "クレジットカード"
-      @order.order_status = 1
-    end
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
 
-    if @order.save
-      @cart_items.each do |cart_item|
-        OrderItem.create!(order_id: @order.id, count: cart_item.count, item_id: cart_item.item_id, price: cart_item.item.price)
-      end
-
-      @cart_items.destroy_all
-      redirect_to '/thanks'
-    else
-      flash[:notice] = "項目に不備があります"
-      render :new  # 注文入力画面を再表示してエラーメッセージを表示します
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id =  @order.id
+      @order_detail.item_id =  cart_item.item_id
+      @order_detail.amount = cart_item.amount
+      @order_detail.price = (cart_item.item.price*1.1).floor
+      @order_detail.save
     end
+    current_customer.cart_items.destroy_all
+    redirect_to thanks_orders_path
   end
 
   def index
-    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+    @orders = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_details= OrderDetail.where(order_id: @order.id)
-    redirect_to confirm_orders_path(id: @order.id)
+    @order_details = @order.order_details
+
+    # @order_details= OrderDetail.where(order_id: @order.id)
+    # redirect_to confirm_orders_path(id: @order.id)
   end
 
   def thanks
@@ -55,8 +53,8 @@ class Public::OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order).permit(:post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
-  end
+    def order_params
+      params.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    end
 
 end
