@@ -12,7 +12,7 @@
           <td>ステータス</td>
           <td>注文詳細</td>
         </tr>
-        <% @orders.each do |order| %>
+        <% form_with model: @orders do |f| %>
         <tr>
           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= order.address %></td>
