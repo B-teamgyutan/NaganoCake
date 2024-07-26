@@ -116,7 +116,9 @@ body {
   background-color: rgba(255, 192, 203, 0.7);
   padding: 20px;
   border-radius: 10px;
+}
 
+// 企業説明
 .main-visual-content {
   position: relative;
   width: 100%;
@@ -142,7 +144,6 @@ body {
   animation-fill-mode: forwards;
   transform: translateX(-100%);
 }
-
 @keyframes main-visual-content_slide {
   0% {
     transform: translate(-100%,0);
