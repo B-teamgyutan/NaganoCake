@@ -2,7 +2,7 @@
 <div class="container p-3">
   <div class="row">
     <div class="col-md-12">
-      <p>注文情報確認</p>
+      <h4>注文情報確認</h4>
 
       <table class="table">
         <thead>
@@ -22,7 +22,7 @@
               </td>
               <td><%= cart_item.item.price %></td>
               <td><%= cart_item.amount %></td>
-              <td><%= cart_item.item.price*cart_item.quantity %></td>
+              <td><%= cart_item.item.price*cart_item.amount %></td>
             </tr>
           </tbody>
         <% end %>
@@ -32,41 +32,22 @@
         <table class="table">
           <tr>
             <td>送料</td>
-            <td>< %= @shipping_fee %></td>
+            <td><%= @shipping_fee %></td>
           </tr>
-          <tr>
-            <td>商品合計</td>
-            <td>< %= @cart_items_price %></td>
-          </tr>
-          <tr>
-            <td>請求額</td>
-            <td>< %= @total_price %></td>
-          </tr>
+            <tr>
+              <td>商品合計</td>
+              <td><%= @cart_items.sum(&:price) %></td>
+            </tr>
+            <tr>
+              <td>請求額</td>
+              <td><%= @cart_items.sum(&:price) + @shipping_fee %></td>
+            </tr>
         </table>
 
-      <p>支払方法</p>
-        <% if @selected_pay_method == "credit_card" %>
-          クレジットカード
-        <% else %>
-          銀行振込
-        <% end %>
 
-        <p>お届け先</p>
-        <%= @selected_address %>
-
-        <%= form_with url: orders_path, method: :post do %>
-
-        <%= hidden_field_tag 'order[pay_method]', @selected_pay_method %>
-        <%= hidden_field_tag 'order[address_type]', @address_type %>
-
-        <% if @address_type == "registered_address" %>
-          <%= hidden_field_tag 'order[registered_address_id]', params[:order][:registered_address_id] %>
-        <% elsif @address_type == "new_address" %>
-          <%= hidden_field_tag 'order[new_post_code]', params[:order][:new_post_code] %>
-          <%= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
-          <%= hidden_field_tag 'order[new_name]', params[:order][:new_name] %>
-        <% end %>
-        <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+      <p>支払方法：<%= @payment_method %></p>
+      <%= form_with model: @order do |form| %>
+        <%= form.submit "注文を確定する", class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
