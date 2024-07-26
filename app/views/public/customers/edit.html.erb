@@ -36,12 +36,17 @@
     <td><%= f.text_field :email %></td>
     <td></td>
   </tr>
+  </table>
 
-  <tr>
-    <td></td>
-    <td><%= f.submit "編集内容を保存" %></td>
-    <td><%= link_to "退会する", customers_unsubscribe_path %></td>
-  </tr>
+
+   <div class="actions">
+    <button class="btn btn-flat">
+    <span>編集内容を保存</span>
+    </button>
+    <div class="actions">
+    <button class="btn btn-flat">
+    <span><%= link_to "退会する", customers_unsubscribe_path %></span>
+    </button>
   <% end %>
-</table>
+
 
