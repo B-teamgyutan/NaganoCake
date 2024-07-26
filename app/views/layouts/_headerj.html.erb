@@ -1,12 +1,12 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-light mb-3" style="padding-top: 16px; margin: 0px;">
+  <nav class="navbar navbar-expand-md navbar-light" style="padding-top: 16px; margin: 0px;">
     <div class="header container-fluid">
-      <%= link_to root_path, class: 'nav-link' do %>
-        <%= image_tag asset_path('font.png'), size: '108x14' %> <i class="fa-solid fa-cake-candles"></i>
+      <div class="box1"><%= link_to root_path, class: 'nav-link' do %>
+        <%= image_tag asset_path('logo.png'), size: '60x48' %></div>
       <% end %>
 
       <!-- ハンバーガーメニュー -->
-      <div class="openbtn navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" onclick="document.querySelector('.openbtn').classList.toggle('active')">
+      <div class="openbtn navbar-toggler ml-auto" data-toggle="collapse" data-target=".navbar-collapse" onclick="document.querySelector('.openbtn').classList.toggle('active')">
         <span></span>
         <span></span>
         <span></span>
@@ -18,7 +18,7 @@
           <!--カスタマーログイン時-->
           <% if customer_signed_in? %>
             <li><div class="header-content"><%= link_to "マイページ", customers_mypage_path %></div></li>
-            <li><div class="header-content"><%= link_to "商品一覧", admin_items_path %></div></li>
+            <li><div class="header-content"><%= link_to "商品一覧", items_path %></div></li>
             <li><div class="header-content"><%= link_to "カート", cart_items_path %></div></li>
             <li><div class="header-content"><%= link_to "ログアウト", destroy_customer_session_path %></div></li>
 
@@ -38,11 +38,14 @@
             <li><div class="header-content"><%= link_to "新規登録", new_customer_registration_path %></div></li>
             <li><div class="header-content"><%= link_to "ログイン", new_customer_session_path %></div></li>
           <% end %>
+            <li><div class="form-group">
+              <form method="get" id="form1" action="https://2e647e39c063408b8a597c5fec5e2a36.vfs.cloud9.ap-northeast-1.amazonaws.com">
+                <button id="sbtn4" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input id="sbox3" name="s" type="text" placeholder="キーワードを入力">
+              </form>
+            </div></li>
           </ul>
       </div>
-
-      <div class="col-3">
-        検索フォーム
       </div>
     </div>
   </nav>

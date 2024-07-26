@@ -18,3 +18,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "./btn"
+import "./slideshow"

@@ -3,9 +3,15 @@
 <body>
   <main>
     <!--メイン画像-->
-  <div class="main-visual">
-  <!--ジャンル検索欄-->
-  <%= render 'layouts/genres' %>
+  <!--<div class="main-visual">-->
+  <div class="slideshow-container">
+    <div class="slide fade" style="background-image: url('/assets/top1.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="slide fade" style="background-image: url('/assets/top2.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="slide fade" style="background-image: url('/assets/top3.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="slide fade" style="background-image: url('/assets/top4.jpg'); background-size: cover; background-position: center;"></div>
+    <!--ジャンル検索欄-->
+      <%= render 'layouts/genres' %>
+    </div>
   </div>
   </main>
     <div class="main-visual-content">

@@ -51,12 +51,17 @@ body {
 }
 
 .nav-link {
-    display: block;
-    padding: 0.5rem;
-    padding-right: 1rem;
+  display: block;
+  padding: 0.5rem;
 }
 
 // ジャンル
+.genres-container {
+  position: absolute;
+  top: 0; /* 適切な値に調整してください */
+  z-index: 999; /* ジャンル検索欄の表示優先度を設定します */
+}
+
 .genre {
   color: #D63484;
   background: rgba(#ffffff, 0.4);
@@ -70,19 +75,55 @@ body {
   white-space: nowrap;
 }
 
-.main-visual {
-  width: 100%; /* 横幅いっぱい */
-  height: 400px; /* 高さ */
-  background-image: url('/images/food-photographer-jennifer-pallian-8Jg4U4xHu-o-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
+.slideshow-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
 }
 
+.slide {
+  width: 100%;
+  height: 400px;
+　object-fit: contain;
+  position: absolute;
+  top: 0;
+}
+
+.slide img {
+  width: inherit;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.slide.fade:first-child {
+  opacity: 1;
+}
+
+.backimage .text {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.backimage .text .guidance {
+  font-size: 18px;
+  color: #fff;
+  background-color: rgba(255, 192, 203, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+// 企業説明
 .main-visual-content {
   position: relative;
   width: 100%;
   height: 220px;
-  background: rgba(#ffffff, 0.4);
+  color: #fff;
   text-align: center; /* 文字を中央揃えにする */
   padding-top: 40px;
   overflow: hidden;
@@ -106,11 +147,11 @@ body {
 @keyframes main-visual-content_slide {
   0% {
     transform: translate(-100%,0);
-    background: rgba(#ffffff, 0.4); /* 初期の背景色を設定 */
+    background: #fff; /* 初期の背景色を設定 */
   }
   100% {
     transform: translate(0,0);
-    background: #F8F4EC; /* 最終的な背景色を設定 */
+    background: #FF9BD2; /* 最終的な背景色を設定 */
   }
 }
 
@@ -119,9 +160,8 @@ body {
 }
 
 .sub-visual {
-  width: 100%; /* 横幅いっぱい */
-  height: 1000px; /* 高さ */
-  background-image: url('/images/deva-williamson-0hnqS3Stj0w-unsplash.jpg');
+  width: 100%;
+  height: 1000px;
   background-size: cover;
   background-position: center;
 }
@@ -157,6 +197,49 @@ body {
 table thead :first-child {
 	color: #F8F4EC;
 	background: #402B3A;
+}
+
+#form1 {
+  display: flex;
+  align-items: center;
+}
+
+#form2{
+  display: flex;
+  justify-content: center;
+  border: solid 2px #666;
+  max-width: 300px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  }
+/*入力フォーム*/
+#sbox3{
+  width: 150px;
+  padding: 0;
+  border-radius: initial;
+  background: transparent;
+  border: none;
+  outline: 0;
+}
+/*検索ボタン*/
+#sbtn4{
+  width: 40px;
+  background: transparent;
+  border-radius: initial;
+  border: none;
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+}
+#sbtn4:hover{
+  background: #D63484;
+  color: #fff;
+}
+
+.form-group {
+  margin-top: 1.1rem;
 }
 
 // ボタン関連
@@ -268,4 +351,13 @@ button.btn {
     left: 18px;
     transform: translateY(-6px) rotate(45deg);
     width: 30%;
+}
+
+@media(max-width: 768px) {  // mdサイズ以下の場合に適用
+  .row {
+    display: block;
+  }
+  .col-6 {
+    max-width: 100%;
+  }
 }
