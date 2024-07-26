@@ -44,8 +44,22 @@
             </tr>
         </table>
 
-
-      <p>支払方法：<%= @payment_method %></p>
+      
+      <p>支払方法： <%= @payment_method %></p>
+      <div>
+        <h5>
+          <strong>お届け先</strong>
+        </h5>
+        <p>選択したお届け先: <%= @address_type %></p>
+        
+        <% if @address_type == "ご自身の住所" %>
+          <p>〒<%= @post_code %> <%= @address %> <%= @full_name %></p>
+        <% elsif @address_type == "登録済み住所" %>
+          <!-- 登録済み住所に関する表示 -->
+        <% elsif @address_type == "新しいお届け先" %>
+          <!-- 新しいお届け先に関する表示 -->
+        <% end %>
+      </div>
       <%= form_with model: @order do |form| %>
         <%= form.submit "注文を確定する", class: "btn btn-success" %>
       <% end %>

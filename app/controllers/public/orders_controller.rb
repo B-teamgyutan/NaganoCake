@@ -7,8 +7,9 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @cart_items = current_customer.cart_items
-    @order = Order.new
-    @payment_method = params[:payment_method]
+    @order = Order.new(order_params)
+    @payment_method = params[:order][:payment_method]
+    
     if @order.save
       # 保存成功した場合の処理
     else
@@ -25,6 +26,17 @@ class Public::OrdersController < ApplicationController
     @shipping_fee = 800
     if @order.payment_method == "クレジットカード"
       @order.order_status = 1
+    end
+    
+    if params[:address_type] == "member_address"
+      @address_type = "ご自身の住所"
+      @post_code = current_customer.post_code
+      @address = current_customer.address
+      @full_name = current_customer.full_name
+    elsif params[:address_type] == "registered_address"
+      # 登録済み住所に関する処理
+    elsif params[:address_type] == "new_address"
+      # 新しいお届け先に関する処理
     end
 
     if @order.save
@@ -56,7 +68,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name)
   end
 
 end
