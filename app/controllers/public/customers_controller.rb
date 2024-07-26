@@ -30,7 +30,7 @@ class Public::CustomersController < ApplicationController
                                       :first_name_kana,
                                       :post_code,
                                       :address,
-                                      :telephone_number,
+                                      :phone_number,
                                       :email
                                       )
   end

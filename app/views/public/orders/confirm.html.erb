@@ -44,7 +44,6 @@
             </tr>
         </table>
 
-
       <p>支払方法：<%= @payment_method %></p>
         <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
          <%= f.hidden_field :customer_id %>
