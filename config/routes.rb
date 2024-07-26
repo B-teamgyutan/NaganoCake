@@ -34,12 +34,6 @@ Rails.application.routes.draw do
   get '/customers/sign_out', to: 'public/sessions#destroy'
 end
 
-  scope module: 'customer' do
-    resources :customers, only:[:show, :edit, :update]
-      
-    end
-
-
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
