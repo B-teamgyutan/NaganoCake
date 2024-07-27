@@ -4,30 +4,34 @@
     <div class="col-md-12">
       <h3>注文履歴</h3>
       <table class="table">
-        <tr>
-          <td>注文日</td>
-          <td>配送先</td>
-          <td>注文商品</td>
-          <td>支払金額</td>
-          <td>ステータス</td>
-          <td>注文詳細</td>
-        </tr>
-        <% @orders.each do |order| %>
-        <tr>
-          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%= order.address %></td>
-          <td>
-            <ul class="list-unstyled">
-              <% order.order_details.each do |order_detail|  %>
-                <li><%= order_detail.item_id %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td><%= order.total_payment %></td>
-          <td><%= order.status_i18n %></td>
-          <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info" %></td>
-        </tr>
-        <% end %>
+        <thead>
+          <tr>
+            <td>注文日</td>
+            <td>配送先</td>
+            <td>注文商品</td>
+            <td>支払金額</td>
+            <td>ステータス</td>
+            <td>注文詳細</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+
+              <td><%= order.address %><%= order.post_code %></td>
+
+              <td>
+                <% order.order_details.each do |order_detail| %>
+                  <%= order_detail.item.name %>
+                <% end %>
+              </td>
+              <td><%= order.total_payment %></td>
+              <td><%= order.status %></td>
+              <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info" %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>

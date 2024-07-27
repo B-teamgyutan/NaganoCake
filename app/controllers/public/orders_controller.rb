@@ -3,25 +3,47 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @addresses = current_customer.addresses.all
   end
 
   def confirm
-    @cart_items = current_customer.cart_items
-    @order = Order.new(order_params)
-    @payment_method = params[:order][:payment_method]
-    
-    if @order.save
-      # 保存成功した場合の処理
-    else
-      # 保存失敗した場合の処理
-      @order.errors.full_messages
-    end
-    @shipping_fee = 800
 
+    @order = Order.new(order_params)
+
+    @payment_method = params[:order][:payment_method]
+    @shipping_cost = 800
+
+    # if文を記述して、hidden fieldが作動するようにする。
+    # ご自身の住所と配送先住所が選択された場合はhiddenで処理
+
+    # 登録新規登録時の住所
+    if params[:order][:address_type] == "0"
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
+
+      # 追加登録した住所
+    elsif params[:order][:address_type] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
+
+      # 新規住所入力
+    elsif params[:order][:address_type] == "2"
+      @order.post_code = params[:order][:post_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    else
+      render 'new'
+    end
+
+    @cart_items = current_customer.cart_items.all
+    @order.customer_id = current_customer.id
   end
 
   def create
-    @shipping_fee = 800
+    @shipping_cost = 800
     if params[:address_type] == "member_address"
       @address_type = "ご自身の住所"
       @post_code = current_customer.post_code
@@ -32,7 +54,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:address_type] == "new_address"
       # 新しいお届け先に関する処理
     end
-    
+
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
@@ -51,6 +73,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+
   end
 
   def show
@@ -58,14 +81,13 @@ class Public::OrdersController < ApplicationController
     @order_details = @order.order_details
 
     # @order_details= OrderDetail.where(order_id: @order.id)
-    # redirect_to confirm_orders_path(id: @order.id)
   end
 
   def thanks
   end
 
   private
-  
+
     def order_params
       params.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
     end
