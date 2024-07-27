@@ -19,16 +19,16 @@
           <h5>
             <strong>お届け先</strong>
           </h5>
-          <%= f.radio_button :address_type,"member_address", checked: true %>
+          <%= f.radio_button :address_type, "0", checked: true %>
           <%= f.label :address_type, "ご自身の住所" %>
-          <p>〒<%= current_customer.post_code%> <%=current_customer.address %> <%=current_customer.full_name%></p>
-          <%= f.radio_button :address_type, "registered_address" %>
+          <p>〒<%= current_customer.post_code%> <%= current_customer.address %> <%= current_customer.full_name%></p>
+          <%= f.radio_button :address_type, "1" %>
           <%= f.label :address_type, "登録済み住所" %>
           <br>
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
         </div>
         <br>
-        <%= f.radio_button :address_type, "new_address" %>
+        <%= f.radio_button :address_type, "2" %>
         <%= f.label :address_type, "新しいお届け先" %>
         <div class="form-group row">
           <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-form-label col-sm-3" %>
