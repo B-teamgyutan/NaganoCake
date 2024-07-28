@@ -17,7 +17,7 @@
 		<div class="col-lg-4">
 		<h5>請求情報</h5>
 		<table class="table table-bordered">
-			<tr><th class="active">商品合計</th><td><%= @order.total_payment %>円</td></tr>
+			<tr><th class="active">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %>円</td></tr>
 			<tr><th class="active">配送料</th><td><%= @order.shipping_cost %>円</td></tr>
 			<tr><th class="active">ご請求額</th><td><%= @order.total_payment %>円</td></tr>
 		</table>
@@ -33,14 +33,14 @@
 				<th>個数</th>
 				<th>小計</th>
 			</tr>
-					<% @order_details.each do |order_detail| %>
+				<% @order_details.each do |order_detail| %>
 					<tr>
 						<td><%= order_detail.item.name %></td>
 						<td><%= order_detail.price %></td>
 						<td><%= order_detail.amount %></td>
 						<td><%= (order_detail.price *  order_detail.amount).to_s(:delimited) %></td>
 					</tr>
-					<% end %>
+				<% end %>
 			</table>
 		</div>
 	</div>
