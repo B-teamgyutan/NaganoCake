@@ -34,10 +34,10 @@
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>
-                <td width="60"><%= cart_item.subtotal %></td>
+                <td width="60"><%= cart_item.price %></td>
                 <td width="60"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
               </tr>
-              <% @sum += cart_item.subtotal %>
+              <% @sum += cart_item.price %>
             <% end %>
           </table>
           <div class="container" style="display: flex; justify-content: flex-end;">
@@ -54,7 +54,7 @@
               <span>買い物を続ける</span>
           <% end %>
           <%= link_to new_order_path, class: "btn btn-flat" do%>
-            <span>情報入力に進む</span>
+            <span>次に進む</span>
           <% end %>
       <% end %>
   </div>

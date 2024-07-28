@@ -5,12 +5,9 @@ class CartItem < ApplicationRecord
   # current_customer.cart_items.destroy_all
 
   # 小計を求めるメソッド
-  def subtotal
-    item.price_with_tax * amount
-  end
 
   def price
-    item.price * amount
+    item.price_with_tax * amount
   end
 
 end

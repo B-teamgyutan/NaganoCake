@@ -9,7 +9,7 @@
 		<h5>注文情報</h5>
 		<table class="table table-bordered">
 			<tr><th class="active">注文日</th><td><%= @order.created_at.to_s(:date_jp) %></td></tr>
-			<tr><th class="active">配送先</th><td>〒 <%= @order.address %>　様</td></tr>
+			<tr><th class="active">配送先</th><td>〒 <%= @order.post_code %>  <%= @order.address %>  <%= @order.name %>　様</td></tr>
 			<tr><th class="active">支払方法</th><td><%= @order.payment_method%></td></tr>
 			<tr><th class="active">ステータス</th><td><%= @order.status %></td></tr>
 		</table>

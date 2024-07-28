@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_type] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.full_name
 
       # 追加登録した住所
     elsif params[:order][:address_type] == "1"
