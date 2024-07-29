@@ -26,7 +26,7 @@
                   <%= order_detail.item.name %>
                 <% end %>
               </td>
-              <td><%= order.total_payment %></td>
+              <td><%= number_with_delimiter(order.total_payment) %></td>
               <td><%= order.status %></td>
               <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info" %></td>
             </tr>
