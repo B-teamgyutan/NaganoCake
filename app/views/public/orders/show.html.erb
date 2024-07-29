@@ -17,9 +17,9 @@
 		<div class="col-lg-4">
 		<h5>請求情報</h5>
 		<table class="table table-bordered">
-			<tr><th class="active">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %>円</td></tr>
+			<tr><th class="active">商品合計</th><td><%= number_with_delimiter(@order.total_payment - @order.shipping_cost) %>円</td></tr>
 			<tr><th class="active">配送料</th><td><%= @order.shipping_cost %>円</td></tr>
-			<tr><th class="active">ご請求額</th><td><%= @order.total_payment %>円</td></tr>
+			<tr><th class="active">ご請求額</th><td><%= number_with_delimiter(@order.total_payment) %>円</td></tr>
 		</table>
 	</div>
 	</div>
@@ -27,20 +27,24 @@
 		<div class="col-lg-10">
 			<h5>注文内容</h5>
 			<table class="table table-bordered">
-			<tr class="active">
-				<th>商品</th>
-				<th>単価（税込）</th>
-				<th>個数</th>
-				<th>小計</th>
-			</tr>
-				<% @order_details.each do |order_detail| %>
-					<tr>
-						<td><%= order_detail.item.name %></td>
-						<td><%= order_detail.price %></td>
-						<td><%= order_detail.amount %></td>
-						<td><%= (order_detail.price *  order_detail.amount).to_s(:delimited) %></td>
+				<thead>
+					<tr class="active">
+						<th>商品</th>
+						<th>単価（税込）</th>
+						<th>個数</th>
+						<th>小計</th>
 					</tr>
-				<% end %>
+				</thead>
+				<tbody>
+					<% @order_details.each do |order_detail| %>
+						<tr>
+							<td><%= order_detail.item.name %></td>
+							<td><%= number_with_delimiter(order_detail.price) %></td>
+							<td><%= order_detail.amount %></td>
+							<td><%= number_with_delimiter(order_detail.price *  order_detail.amount) %></td>
+						</tr>
+					<% end %>
+				</tbody>
 			</table>
 		</div>
 	</div>

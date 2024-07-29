@@ -7,7 +7,7 @@
           <br></br>
           <h4><%= @item.name %></h4>
           <p><%= @item.item_details %></p>
-          <p>￥<%= @item.price_with_tax %>(税込)</p>
+          <p>￥<%= number_with_delimiter(@item.price_with_tax) %>(税込)</p>
           <%= form_with model:@cart_item_new, local:true do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.select :amount, *[1..10] %>
@@ -19,12 +19,3 @@
   </div>
 </div>
 
-<!--< %= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>-->
-<!--< %= @item.name %>-->
-<!--< %= @item.item_details %>-->
-<!--< %= @item.price %>-->
-<!--< %= form_with model:@cart_item_new, local:true do |f| %>-->
-<!--　< %= f.hidden_field :item_id, value: @item.id %>-->
-<!--  < %= f.select :amount, *[1..10] %>-->
-<!-- < %= f.submit 'カートに入れる', class:"btn btn-success" %>-->
-<!--< % end %>-->

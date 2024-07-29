@@ -18,11 +18,11 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @item = Item.find(params[:id])
   end
 
-  def edit
+  def show
     @item = Item.find(params[:id])
   end
 

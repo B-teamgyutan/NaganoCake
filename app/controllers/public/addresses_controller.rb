@@ -6,19 +6,6 @@ class Public::AddressesController < ApplicationController
 		@address = Address.new
 	end
 
-	def edit
-		@address = Address.find(params[:id])
-		if @address.customer_id != current_customer.id
-			redirect_to root_path
-		end
-	end
-
-	def destroy
-		address = Address.find(params[:id])
-		address.destroy
-		redirect_to '/addresses'
-	end
-
 	def create
 		address = Address.new(address_params)
 		if address.save
@@ -26,6 +13,13 @@ class Public::AddressesController < ApplicationController
 		else
 			flash[:notice] = "項目を正しく記入してください"
 			redirect_to request.referrer
+		end
+	end
+
+	def edit
+		@address = Address.find(params[:id])
+		if @address.customer_id != current_customer.id
+			redirect_to root_path
 		end
 	end
 
@@ -37,6 +31,12 @@ class Public::AddressesController < ApplicationController
 			flash[:notice] = "項目を正しく記入してください"
 			redirect_to request.referrer
 		end
+	end
+
+	def destroy
+		address = Address.find(params[:id])
+		address.destroy
+		redirect_to '/addresses'
 	end
 
 	private

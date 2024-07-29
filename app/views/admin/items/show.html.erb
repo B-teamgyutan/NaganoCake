@@ -18,7 +18,7 @@
             </tr>
             <tr>
               <td>税込価格(税抜価格)</td>
-              <td><%= @item.price_with_tax %>(<%= @item.price %>)円</td>
+              <td><%= number_with_delimiter(@item.price_with_tax) %>(<%= number_with_delimiter(@item.price) %>)円</td>
             </tr>
             <tr>
               <td>ジャンル</td>

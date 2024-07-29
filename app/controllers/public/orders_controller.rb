@@ -1,15 +1,50 @@
 class Public::OrdersController < ApplicationController
   # before_action :authenticate_member!
 
+  def index
+    @orders = current_customer.orders
+  end
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses.all
   end
 
-  def confirm
-
+  def create
+    @shipping_cost = 800
+    if params[:address_type] == "member_address"
+      @address_type = "ご自身の住所"
+      @post_code = current_customer.post_code
+      @address = current_customer.address
+      @full_name = current_customer.full_name
+    elsif params[:address_type] == "registered_address"
+      # 登録済み住所に関する処理
+    elsif params[:address_type] == "new_address"
+      # 新しいお届け先に関する処理
+    end
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
 
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id =  @order.id
+      @order_detail.item_id =  cart_item.item_id
+      @order_detail.amount = cart_item.amount
+      @order_detail.price = (cart_item.item.price*1.1).floor
+      @order_detail.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to thanks_orders_path
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+
+  def confirm
+    @order = Order.new(order_params)
     @payment_method = params[:order][:payment_method]
     @shipping_cost = 800
 
@@ -37,57 +72,14 @@ class Public::OrdersController < ApplicationController
     else
       render 'new'
     end
-
     @cart_items = current_customer.cart_items.all
     @order.customer_id = current_customer.id
-  end
-
-  def create
-    @shipping_cost = 800
-    if params[:address_type] == "member_address"
-      @address_type = "ご自身の住所"
-      @post_code = current_customer.post_code
-      @address = current_customer.address
-      @full_name = current_customer.full_name
-    elsif params[:address_type] == "registered_address"
-      # 登録済み住所に関する処理
-    elsif params[:address_type] == "new_address"
-      # 新しいお届け先に関する処理
-    end
-
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-
-    current_customer.cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new
-      @order_detail.order_id =  @order.id
-      @order_detail.item_id =  cart_item.item_id
-      @order_detail.amount = cart_item.amount
-      @order_detail.price = (cart_item.item.price*1.1).floor
-      @order_detail.save
-    end
-    current_customer.cart_items.destroy_all
-    redirect_to thanks_orders_path
-  end
-
-  def index
-    @orders = current_customer.orders
-
-  end
-
-  def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details
-
-    # @order_details= OrderDetail.where(order_id: @order.id)
   end
 
   def thanks
   end
 
   private
-
     def order_params
       params.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
     end

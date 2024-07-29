@@ -27,17 +27,17 @@
                 </div>
                   <%= cart_item.item.name %>
                 </td>
-                <td width="60"><%= cart_item.item.price_with_tax %></td>
+                <td width="60"><%= number_with_delimiter(cart_item.item.price_with_tax) %></td>
                 <td width="100">
                   <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
                     <%= f.select :amount, *[1..10] %>
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>
-                <td width="60"><%= cart_item.price %></td>
+                <td width="60"><%= number_with_delimiter(cart_item.price) %></td>
                 <td width="60"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
               </tr>
-              <% @sum += cart_item.price %>
+              <% number_with_delimiter(@sum += cart_item.price) %>
             <% end %>
           </table>
           <div class="container" style="display: flex; justify-content: flex-end;">
@@ -45,7 +45,7 @@
             <table class="table">
               <tr>
                 <td style="width: 45%; padding-left: 30px;">合計金額</td>
-                <td style=""><%= @sum %></td>
+                <td style=""><%= number_with_delimiter(@sum) %></td>
               </tr>
             </table>
           </div>

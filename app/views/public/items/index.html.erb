@@ -14,7 +14,7 @@
               </div>
                 <div class="card-body">
                   <h6 class="card-title"><%= item.name %></h6>
-                  <p class="card-text"><%= item.price %>円</p>
+                  <p class="card-text"><%= number_with_delimiter(item.price_with_tax) %>円</p>
                 </div>
               <% end %>
             </div>

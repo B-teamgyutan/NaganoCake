@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-md-12">
       <h4>注文情報確認</h4>
-
-      <table class="table">
+      
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>商品名</th>
@@ -20,32 +20,32 @@
                 <%= image_tag cart_item.item.image, size: "100x80" %>
                 <strong><%= cart_item.item.name %></strong>
               </td>
-              <td><%= cart_item.item.price_with_tax %></td>
+              <td><%= number_with_delimiter(cart_item.item.price_with_tax) %></td>
               <td><%= cart_item.amount %></td>
-              <td><%= cart_item.item.price_with_tax*cart_item.amount %></td>
+              <td><%= number_with_delimiter(cart_item.item.price_with_tax*cart_item.amount) %></td>
             </tr>
           </tbody>
         <% end %>
       </table>
 
       <!--送料　上のテーブルの右横に配置-->
-        <table class="table">
+        <table class="table table-bordered">
           <tr>
             <td>送料</td>
             <td><%= @shipping_cost %></td>
           </tr>
             <tr>
               <td>商品合計</td>
-              <td><%= @cart_items.sum(&:price) %></td>
+              <td><%= number_with_delimiter(@cart_items.sum(&:price)) %></td>
             </tr>
             <tr>
               <td>請求額</td>
-              <td><%= @cart_items.sum(&:price) + @shipping_cost %></td>
+              <td><%= number_with_delimiter(@cart_items.sum(&:price) + @shipping_cost) %></td>
             </tr>
         </table>
 
       <p>支払方法：<%= @payment_method %></p>
-      <p>お届け先：<%= @order.post_code %><%= @order.address %></p>
+      <p>お届け先：〒<%= @order.post_code %>　<%= @order.address %></p>
 
         <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :shipping_cost ,:value => @shipping_cost %>
